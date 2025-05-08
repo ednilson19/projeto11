@@ -1,0 +1,80 @@
+.body {
+    font-size: 80px;
+    background: radial-gradient(circle, hsla(140, 100%, 50%, 0.502), #ece8e534); /* Set the desired gradient colors */
+}
+
+.heading {
+    width: 50%;
+    margin: 30px auto;
+    text-align: center;
+    color: black;
+    background: #dffd;
+    border: 2px solid rgb(20, 20, 19);
+    border-radius: 20px;
+}
+
+form {
+    width: 50%;
+    margin: 30px auto;
+    border-radius: 5px;
+    padding: 10px;
+    /* background-color: #ffffff; */
+}
+
+.task_input {
+    width: 73%;
+    height: 15px;
+    padding: 10px;
+    /* border: 2px solid #ffa; */
+}
+
+.add_btn {
+    height: 39px;
+    background: #FFF8DC;
+    color: #000000;
+    border: 2px solid #322;
+    border-radius: 5px;
+    padding: 5px 20px;
+}
+
+table {
+    width: 50%;
+    margin: 30px auto;
+    border-collapse: collapse;
+}
+
+tr {
+    border-bottom: 1px solid #cbcbcb;
+}
+
+th {
+    font-size: 19px;
+    color: #000000;
+}
+
+th,
+td {
+    border: none;
+    height: 30px;
+    padding: 2px;
+}
+
+/* tr:hover{
+background: #ecacac;
+} */
+
+.task {
+    text-align: center;
+}
+
+.delete {
+    text-align: center;
+}
+
+.delete a {
+    color: black;
+    /* background: #a52a2a; */
+    padding: 1px 6px;
+    border-radius: 5px;
+    text-decoration: none;
+}

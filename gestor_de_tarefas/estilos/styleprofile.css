@@ -1,0 +1,150 @@
+/* styleprofile.css */
+
+/* Body styles */
+body {
+  background-color: #ccc;
+  font-family: Arial, sans-serif;
+
+}
+
+/* Main container styles */
+main {
+  background-color: #fff;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Heading styles */
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+/* Form styles */
+form {
+  margin-top: 10px;
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  padding: 8px 20px;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Error message styles */
+ul {
+  list-style-type: none;
+  color: #f00;
+  margin-top: 0;
+  /* margin-bottom: 10px; */
+  padding-left: 0;
+}
+
+/* Delete account button styles */
+.apagarconta {
+  padding: 8px 20px;
+  border-radius: 5px;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.apagarconta:hover {
+  background-color: #d32f2f;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: #f2f2f2;
+  margin: 15% auto;
+  max-width: 350px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+}
+
+.cancel {
+  padding: 8px 20px;
+  border-radius: 5px;
+  background-color: #ccc;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.deleteAccount {
+  padding: 8px 20px;
+  border-radius: 5px;
+  background-color: #f44336;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.deleteAccount:hover {
+  background-color: #d32f2f;
+}
+#confirmDelete{
+  background-color: #f44336;
+  color: #ffffff;
+}   
+.historico {
+  background-color: #007bff; /* Cor de fundo */
+  color: white; /* Cor do texto */
+  border: none; /* Sem borda */
+  padding: 5px 10px; /* Espaçamento interno */
+  cursor: pointer; /* Cursor ao passar */
+  border-radius: 4px; /* Borda arredondada */
+  font-size: 16px; /* Tamanho da fonte */
+}
+
+.historico:hover {
+  background-color: #333538; /* Cor de fundo ao passar */
+}
