@@ -1,20 +1,17 @@
-<?php 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-require 'vendor/autoload.php';
+<?php
+
 include 'database.php';
 include_once 'header.php';
 if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $titulo = $_POST['titulo'];
     $descricao = $_POST['descricao'];
     $prioridade = $_POST['prioridade'];
     $data_conclusao = $_POST['data_conclusao'];
-    $aviso = $_POST['aviso'];
+   
     $user_id = $_SESSION['user_id'];
     
     $sql = "SELECT email FROM user WHERE id = ?";
@@ -25,20 +22,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->fetch();
         $stmt->close();
     } else {
-       
         exit;
     }
 
-    
- $sql = "INSERT INTO tarefas (titulo, descricao, prioridade, data_conclusao, user_id) VALUES (?, ?, ?, ?, ?)";
-if ($stmt = $mysqli->prepare($sql)) {
-    $stmt->bind_param("ssssi", $titulo, $descricao, $prioridade, $data_conclusao, $user_id);
-    $stmt->execute();
-    $stmt->close();
+  
+    $sql = "INSERT INTO tarefas (titulo, descricao, prioridade, data_conclusao, user_id) VALUES (?, ?, ?, ?, ?)";
+    if ($stmt = $mysqli->prepare($sql)) {
+        $stmt->bind_param("ssssi", $titulo, $descricao, $prioridade, $data_conclusao, $user_id);
+        $stmt->execute();
+        $stmt->close();
+    }
 }
-
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="PT">

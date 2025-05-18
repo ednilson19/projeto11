@@ -41,20 +41,12 @@ $result = $mysqli->query($sql);
         <div class="estado-tarefa-selecionado">
             <label for="estadotarefa">Estado:</label>
             <select id="estadotarefa" onchange="filterTasks()">
-                <option value="all">Todas</option>
+                <option value="all" >Todas</option>
                 <option value="pending" selected>Pendentes</option>
                 <option value="completed">Concluídas</option>
             </select>
         </div>
-        <div class="tarefa-prioridade-selector">
-            <label for="tarefaprioridade">Prioridade:</label>
-            <select id="tarefaprioridade" onchange="filterTasks()">
-                <option value="all">Todas</option>
-                <option value="alta">Alta</option>
-                <option value="media">Média</option>
-                <option value="baixa">Baixa</option>
-            </select>
-        </div>
+       
     </div>
 
     <?php
@@ -101,30 +93,23 @@ $result = $mysqli->query($sql);
 </div>
 
 <script>
+// ...existing code...
 function filterTasks() {
     var taskStatus = document.getElementById('estadotarefa').value;
-    var taskPriority = document.getElementById('tarefaprioridade').value;
     var rows = document.querySelectorAll('#taskTable tbody tr');
 
     rows.forEach(row => {
         var isCompleted = row.classList.contains('completed');
-        var priority = row.classList.contains('alta') ? 'alta' :
-                       row.classList.contains('media') ? 'media' : 
-                       row.classList.contains('baixa') ? 'baixa' : '';
-
         var showRow = true;
 
         if (taskStatus !== 'all' && ((taskStatus === 'pending' && isCompleted) || (taskStatus === 'completed' && !isCompleted))) {
             showRow = false;
         }
 
-        if (taskPriority !== 'all' && priority !== taskPriority) {
-            showRow = false;
-        }
-
         row.style.display = showRow ? '' : 'none';
     });
 }
+// ...existing code...
 
 window.onload = function() {
     filterTasks();
