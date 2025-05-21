@@ -1,5 +1,6 @@
 <?php
 
+
 include 'database.php';
 include_once 'header.php';
 
@@ -7,7 +8,6 @@ include_once 'header.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['task_id'])) {
     $task_id = $_POST['task_id'];
 
-    
     $sql = "UPDATE tarefas SET concluida = 1 WHERE id = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param("i", $task_id);
@@ -46,7 +46,15 @@ $result = $mysqli->query($sql);
                 <option value="completed">Concluídas</option>
             </select>
         </div>
-       
+        <div class="prioridade-tarefa-selecionado" style="margin-top:10px;">
+            <label for="prioridadetarefa">Prioridade:</label>
+            <select id="prioridadetarefa" onchange="filterTasks()">
+                <option value="all">Todas</option>
+                <option value="alta">Alta</option>
+                <option value="média">Média</option>
+                <option value="baixa">Baixa</option>
+            </select>
+        </div>   
     </div>
 
     <?php
@@ -74,13 +82,14 @@ $result = $mysqli->query($sql);
                     <td>{$row['data_conclusao']}</td>
                     <td>";
                     
-            if (!$row["concluida"]) {        // Se a tarefa não estiver concluída, exibe um botão para marcar como concluída
+            if (!$row["concluida"]) { // Se a tarefa não estiver concluída, exibe um botão para marcar como concluída
                 echo "<form action='' method='POST' style='display:inline;'>
                         <input type='hidden' name='task_id' value='{$row['id']}'>
                         <input type='submit' class='concluido' value='Concluir'>
                       </form>";
             }
-       
+
+            echo "</td></tr>";
         }
 
         echo "</tbody></table>";
@@ -93,32 +102,32 @@ $result = $mysqli->query($sql);
 </div>
 
 <script>
-// ...existing code...
+function toggleFilter() {
+    var filtro = document.querySelector('.filtro');
+    filtro.style.display = (filtro.style.display === 'none' || filtro.style.display === '') ? 'block' : 'none';
+}
+
 function filterTasks() {
     var taskStatus = document.getElementById('estadotarefa').value;
+    var priority = document.getElementById('prioridadetarefa').value;
     var rows = document.querySelectorAll('#taskTable tbody tr');
 
     rows.forEach(row => {
         var isCompleted = row.classList.contains('completed');
+        var rowPriority = row.classList.contains('alta') ? 'alta' :
+                          row.classList.contains('média') ? 'média' :
+                          row.classList.contains('baixa') ? 'baixa' : '';
         var showRow = true;
 
         if (taskStatus !== 'all' && ((taskStatus === 'pending' && isCompleted) || (taskStatus === 'completed' && !isCompleted))) {
             showRow = false;
         }
+        if (priority !== 'all' && rowPriority !== priority) {
+            showRow = false;
+        }
 
         row.style.display = showRow ? '' : 'none';
     });
-}
-// ...existing code...
-
-window.onload = function() {
-    filterTasks();
-};
-
-// Função para alternar a visibilidade dos filtros
-function toggleFilter() {
-    var filters = document.querySelector('.filtro');
-    filters.style.display = (filters.style.display === 'none' || filters.style.display === '') ? 'block' : 'none';
 }
 </script>
 </body>
